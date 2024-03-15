@@ -12,6 +12,7 @@ function read() {
 function solve() {
   // const txt = read();
   const arrTxt = txt.split('\n');
+  const p = 0;
 }
 
 function isSolved() {
