@@ -1,13 +1,12 @@
-const { match } = require('assert');
+const fs = require('fs');
+const { EOL } = require('os');
 
 function read() {
-  const fs = require('fs');
   const puzzles = fs.readFileSync('./puzzles.txt', 'utf-8');
   return puzzles;
 }
 
 function solve() {
-  const { EOL } = require('os');
   const txt = read().trim();
   const arrT = txt.split(EOL);
   const arrBoard = [];
@@ -24,22 +23,23 @@ function solve() {
   console.log(arrBoard);
   const first = arrBoard[0];
   console.table(first);
-
-
-
-  const matches = []
-  const matchRow = [];
-  const matchColumn = [];
-  const matchCub = [];
-  const reg = /-/g
+  const reg = /-/g;
+  const matches = [];
 
   for (let i = 0; i < first.length; i += 1) {
     matches.push(first[i].join('').match(reg).length);
   }
   console.log(matches);
-  const iMin = matches.indexOf(Math.min(...matches))
-  console.log(iMin);
+  const iMin = matches.indexOf(Math.min(...matches));
 
+  const matchRow = [];
+  const matchColumn = [];
+  const matchCub = [];
+
+  for (let i = 1; i <= 9; i += 1) {
+    if (!first[iMin].join('').includes(i)) matchRow.push(i);
+  }
+  console.log(matchRow);
 }
 
 solve();
