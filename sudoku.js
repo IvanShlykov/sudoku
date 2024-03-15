@@ -20,26 +20,57 @@ function solve() {
     }
     arrBoard[k] = board;
   }
-  console.log(arrBoard);
+  console.table(arrBoard);
   const first = arrBoard[0];
   console.table(first);
-  const reg = /-/g;
-  const matches = [];
 
-  for (let i = 0; i < first.length; i += 1) {
-    matches.push(first[i].join('').match(reg).length);
+  for (let q = 0; q < 50; q += 1) {
+    const reg = /-/g;
+    const matches = [];
+
+    for (let i = 0; i < first.length; i += 1) {
+      matches.push((first[i].join('').match(reg) || []).length);
+    }
+    for (let i = 0; i < 9; i += 1) {
+      if (matches[i] === 0) matches[i] = 10;
+    }
+    console.log(matches);
+    const iMin = matches.indexOf(Math.min(...matches));
+
+    for (let j = 0; j < 9; j += 1) {
+      const matchRow = [];
+      const matchColumn = [];
+      const matchCub = [];
+
+      if (!isNaN(+first[iMin][j])) continue;
+      for (let i = 1; i <= 9; i += 1) {
+        if (!first[iMin].join('').includes(i)) matchRow.push(i);
+      }
+      // console.log(matchRow);
+
+      const column = [];
+      for (let i = 0; i < 9; i += 1) {
+        if (isNaN(+first[iMin][j])) column.push(first[i][j]);
+      }
+      // console.log(column);
+      for (let i = 1; i <= 9; i += 1) {
+        if (!column.join('').includes(i)) matchColumn.push(i);
+      }
+      // console.log(matchColumn);
+      const temp = [];
+      for (let i = 0; i < 9; i += 1) {
+        if (matchColumn.includes(i) && matchRow.includes(i)) {
+          temp.push(i);
+        }
+      }
+      if (temp.length === 1) {
+        first[iMin][j] = temp[0].toString();
+        j = 0;
+      }
+    }
   }
-  console.log(matches);
-  const iMin = matches.indexOf(Math.min(...matches));
 
-  const matchRow = [];
-  const matchColumn = [];
-  const matchCub = [];
-
-  for (let i = 1; i <= 9; i += 1) {
-    if (!first[iMin].join('').includes(i)) matchRow.push(i);
-  }
-  console.log(matchRow);
+  console.table(first);
 }
 
 solve();
