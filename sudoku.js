@@ -5,10 +5,8 @@ function read() {
 }
 
 function solve() {
-  /**
-   * Принимает игровое поле в том формате, в котором его вернули из функции read.
-   * Возвращает игровое поле после попытки его решить.
-   */
+  // const txt = read();
+  const arrTxt = txt.split('\n');
 }
 
 function isSolved() {
