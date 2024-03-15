@@ -1,7 +1,4 @@
 function read() {
-
-
-  fhfdgfdghfghf
   /**
    * 
    * Прочесть файл puzzles.txt в кодировке 'utf-8' и вернуть эти данные из функции
@@ -9,21 +6,13 @@ function read() {
 }
 
 function solve() {
-
-
-
-  sdgdsgdsgdfgdfghdfgd
-  /**
-   * Принимает игровое поле в том формате, в котором его вернули из функции read.
-   * Возвращает игровое поле после попытки его решить.
-   */
+  function () {}
+  function () {}
 }
 
 function isSolved() {
-  /**
-   * Принимает игровое поле в том формате, в котором его вернули из функции solve.
-   * Возвращает булевое значение — решено это игровое поле или нет.
-   */
+  function () {}
+  function () {}
 }
 
 function prettyBoard() {
